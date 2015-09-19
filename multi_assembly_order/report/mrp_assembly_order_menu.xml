@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+	<data>
+		<report id="mrp_production_report_id"
+				string="Multi Assembly Order"
+				model="mrp.production"
+				report_type="qweb-pdf"
+				file="multi_assembly_order.mrp_production_report_template_id"
+				name="multi_assembly_order.mrp_production_report_template_id"/>
+	</data>
+</openerp>

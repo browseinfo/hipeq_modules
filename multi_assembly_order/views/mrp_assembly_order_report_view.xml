@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="mrp_production_report_template_id">
+			<t t-call="report.external_layout">
+				<div class="page">
+					<t t-foreach="docs" t-as="o">
+						<div class="row">
+							<table style="font-size:15;" width="100%">
+				                <thead>
+				                    <tr style="border-bottom:2px solid black; background-color:yellow;">
+				                        <th class="text-center" width="15%">Item Name</th>
+				                        <th class="text-center" width="10%">Quantity</th>
+				                        <th class="text-center" width="15%">Description</th>
+				                        <th class="text-center" width="10%">Available</th>
+				                        <th class="text-center" width="15%">Supplier</th>
+				                        <th class="text-center" width="15%">Supplier Partnumber</th>
+				                        <th class="text-center" width="10%">Shortage</th>
+				                        <th class="text-center" width="10%">ItemCost</th>
+				                    </tr>
+				               </thead>
+				               <tbody class="sale_tbody">
+				                    <tr t-foreach="get_uniq_id(o)" t-as="obj" style="height:30">
+				                    	<td style="border-left:2px solid black;">
+											<span t-esc="obj['name']" style="margin-left:10px"/>
+										</td>
+				                    	<td style="border-left:2px solid black;" class="text-center">
+											<span t-esc="formatLang(obj['product_qty'],2)"/>
+											<span t-esc="obj['uom_id']"/>
+										</td>
+				                        <td style="border-left:2px solid black;" class="text-center">
+				                           <span t-esc="obj['description']"/>
+				                        </td>
+				                        <td style="border-left:2px solid black;" class="text-center">
+				                           <span t-esc="formatLang(obj['qty_available'],0)"/>
+				                        </td>
+				                        <td style="border-left:2px solid black;" class="text-center">
+				                           <span t-esc="obj['seller']"/>
+				                        </td>
+				                        <td style="border-left:2px solid black;" class="text-center">
+				                            <span t-esc="obj['product_code']"/>
+				                        </td>
+				                        <td style="border-left:2px solid black;" class="text-center">
+				                        	<span t-esc="obj['shortage']"/>
+				                        </td>
+				                        <td style="border-left:2px solid black; border-right:2px solid black;">
+				                            <span t-esc="obj['standard_price']" style="margin-left:10px"/>
+				                        </td>
+				                    </tr>
+				                </tbody>
+				            </table>
+				    	</div>
+			     	</t>
+				</div>
+			</t>
+		</template>
+	</data>
+</openerp>
